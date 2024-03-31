@@ -1,0 +1,33 @@
+server:
+  port: 8383
+  servlet:
+    context-path: /
+  scheduling:
+    enabled: true
+spring:
+  batch:
+    initialize-schema: never
+    tablePrefix: pvoil4u.BATCH_
+  profiles:
+    active: sit
+  datasource:
+    hikari:
+      connectionTimeout: 120000
+      idleTimeout: 200000
+      maxLifetime: 600000
+      maximumPoolSize: 5
+      minimumIdle: 2
+      schema: public
+      auto-commit: true
+    driver-class-name: ${spring.datasource.driver-class-name}
+    url: ${spring.datasource.url}
+    username: ${spring.datasource.username}
+    password: ${spring.datasource.password}
+  jpa:
+    database-platform: ${spring.jpa.database-platform}
+    hibernate:
+      ddl-auto: ${spring.jpa.hibernate.ddl-auto}
+  data:
+    jpa:
+      repositories:
+        bootstrap-mode: lazy
